@@ -1,0 +1,12 @@
+.app-header {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.app-header img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+

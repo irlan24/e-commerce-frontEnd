@@ -1,0 +1,57 @@
+<form [formGroup]="agendamentoForm" (ngSubmit)="onSubmit()">
+
+  <h2>Dados do Cliente</h2>
+  
+  <label class="required">Nome</label>
+  <input type="text" placeholder="Seu nome completo" formControlName="nomeCliente">
+
+  <label class="required">Telefone</label>
+  <input type="text" placeholder="(00) 00000-0000" formControlName="telefone">
+
+  <label>Email (Opcional)</label>
+  <input type="email" placeholder="email@exemplo.com" formControlName="email">
+
+  <h2>Pedido</h2>
+
+  <label class="required">Escolha seu Kit</label>
+  <select formControlName="kitId" (change)="aoMudarKit($event)">
+    <option value="" disabled selected>Selecione um combo...</option>
+    <option value="1">Kit Combo Mini - 25 Un.</option>
+    <option value="2">Kit Combo Família - 50 Un.</option>
+    <option value="3">Kit Combo Festa - 100 Un.</option>
+    <option value="4">Kit Combo Personalizado</option>
+  </select>
+
+  <div class="valor-container">
+    <span class="label">Total do Kit:</span>
+    <span class="preco-dinamico">{{ valorKit[valorOption()] }}</span>
+  </div>
+
+  <label>Observações</label>
+  <textarea placeholder="Ex: Sem cebola, preferência por coxinha..." formControlName="observacoes"></textarea>
+
+  <h2>Entrega</h2>
+
+  <div class="row">
+    <div class="col">
+      <label class="required">Data</label>
+      <input type="date" formControlName="dataEntrega">
+    </div>
+    
+    <div class="col">
+      <label class="required">Horário</label>
+      <input type="time" formControlName="horarioEntrega">
+    </div>
+  </div>
+
+  <label class="required">Endereço de Entrega</label>
+  <input type="text" placeholder="Rua, Número" formControlName="endereco">
+
+  <label class="required">Bairro</label>
+  <input type="text" placeholder="Seu bairro" formControlName="bairro">
+
+  <button type="submit" [disabled]="!agendamentoForm.valid" class="btn-submit">
+    {{ agendamentoForm.valid ? 'Agendar pedido' : 'Preencha os campos obrigatórios' }}
+  </button>
+    
+</form>
