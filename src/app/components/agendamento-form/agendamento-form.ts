@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { PedidoService } from '../../services/pedido';
 
 
 
@@ -13,21 +14,17 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 })
 export class AgendamentoForm {
 
-  valorKit: Record<number, string> = {
-    1: "R$ 28,00",
-    2: "R$ 52,50",
-    3: "R$ 100,00",
-    4: "Necessário combinar valores"
+  valorKit: Record<string, string> = {
+    "COMBO_MINI": "R$ 28,00",
+    "COMBO_FAMILIA": "R$ 52,50",
+    "COMBO_FESTA": "R$ 100,00",
+    "COMBO_PERSONALIZADO": "Necessário combinar valores"
   };
 
-  valorOption = signal<number>(0);
-
-
-
-  
+  valorOption = signal<string>("");
   agendamentoForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private pedidoService: PedidoService) {
 
     this.agendamentoForm = this.fb.group({
 
@@ -63,21 +60,32 @@ export class AgendamentoForm {
 
   onSubmit() {
 
-    if (this.agendamentoForm.valid) {
+    const dados = this.agendamentoForm.value;
 
-      console.log("Agendamento enviado");
+    this.pedidoService.criarPedido(dados).subscribe({
+      next: (res) => {
+        console.log('Sucesso', res);
+      },
+      error: (err) => {
+        console.error('Erro', err);
+      }
+    });
 
-    }else{
-      this.agendamentoForm.markAllAsTouched();
-      alert('Por favor, preencha todos os campos obrigatórios corretamente.');
-      // console.log("Elemento " + this.agendamentoForm.controls + " necessário.")
-    } 
+    // if (this.agendamentoForm.valid) {
+
+    //   console.log("Agendamento enviado");
+
+    // }else{
+    //   this.agendamentoForm.markAllAsTouched();
+    //   alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+    //   // console.log("Elemento " + this.agendamentoForm.controls + " necessário.")
+    // } 
 
   }
 
-  aoMudarKit(evento: Event) {
-    const elemento = evento.target as HTMLSelectElement;
-    const id = Number(elemento.value);
+  aoMudarKit(event: Event) {
+    const element = event.target as HTMLSelectElement;
+    const id = element.value;
     this.valorOption.set(id);
   }
 

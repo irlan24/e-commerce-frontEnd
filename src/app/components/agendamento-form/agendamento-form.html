@@ -16,10 +16,10 @@
   <label class="required">Escolha seu Kit</label>
   <select formControlName="kitId" (change)="aoMudarKit($event)">
     <option value="" disabled selected>Selecione um combo...</option>
-    <option value="1">Kit Combo Mini - 25 Un.</option>
-    <option value="2">Kit Combo Família - 50 Un.</option>
-    <option value="3">Kit Combo Festa - 100 Un.</option>
-    <option value="4">Kit Combo Personalizado</option>
+    <option value="COMBO_MINI">Combo Mini - 25 Un.</option>
+    <option value="COMBO_FAMILIA">Combo Família - 50 Un.</option>
+    <option value="COMBO_FESTA">Combo Festa - 100 Un.</option>
+    <option value="COMBO_PERSONALIZADO">Combo Personalizado</option>
   </select>
 
   <div class="valor-container">
@@ -37,7 +37,7 @@
       <label class="required">Data</label>
       <input type="date" formControlName="dataEntrega">
     </div>
-    
+
     <div class="col">
       <label class="required">Horário</label>
       <input type="time" formControlName="horarioEntrega">
