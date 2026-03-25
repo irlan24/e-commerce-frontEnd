@@ -1,0 +1,39 @@
+
+<div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <h2>Acesso ao Sistema</h2>
+
+    <div class="form-group">
+        <label for="usuario">Usuário</label>
+        <input id="usuario" type="text" formControlName="usuario" placeholder="Digite seu nome">
+        
+        @if (loginForm.get('usuario')?.invalid && loginForm.get('usuario')?.touched) {
+        <small class="error-msg">
+            Usuário inválido (mínimo 3 caracteres).
+        </small>
+        }
+    </div>
+
+    <div class="form-group">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" formControlName="senha" placeholder="Digite sua senha">
+        
+        @if (loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched) {
+        <small class="error-msg">
+            A senha deve ter pelo menos 6 dígitos.
+        </small>
+        }
+    </div>
+
+    <div class="actions">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">
+        Entrar
+        </button>
+        
+        <button type="button" (click)="onRegister()" class="btn-register">
+        Criar Conta
+        </button>
+    </div>
+    </form>
+</div>
+
