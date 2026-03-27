@@ -9,12 +9,12 @@ import { Header } from './components/header/header';
 
 
 
-
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, AgendamentoForm, Header],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  
 })
 export class App {
   // protected title = ('first-project-angular');

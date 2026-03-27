@@ -1,0 +1,55 @@
+/* Botão */
+button {
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.5s;
+  
+}
+
+button:hover {
+  background: #43a047;
+}
+
+button:disabled {
+  background: #7d997f;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* .form-group { 
+  margin-bottom: 1.2rem;
+  
+} */
+
+.error-msg{
+    color: rgba(255, 0, 0, 0.575);
+}
+
+.alert-msg{
+  color: #856404;
+}
+
+/* ajuste do hiperlink */
+.link-text{
+    text-align: center;
+}
+
+.link-text a {
+  font-weight: bold;
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.link-text a:hover{
+    color: #aaa;
+}

@@ -9,7 +9,7 @@
         
         @if (loginForm.get('usuario')?.invalid && loginForm.get('usuario')?.touched) {
         <small class="error-msg">
-            Usuário inválido (mínimo 3 caracteres).
+            Usuário inválido (mínimo 4 caracteres).
         </small>
         }
     </div>
@@ -30,9 +30,9 @@
         Entrar
         </button>
         
-        <button type="button" (click)="onRegister()" class="btn-register">
-        Criar Conta
-        </button>
+        <p class="link-text">
+            <span>Não possui conta?</span><a routerLink="/cadastro">Cadastre-se</a>
+        </p>
     </div>
     </form>
 </div>

@@ -28,15 +28,7 @@ export class AgendamentoForm {
 
     this.agendamentoForm = this.fb.group({
 
-      nomeCliente: ['', Validators.required],
-
-      telefone: ['', Validators.required],
-
-      email: ['', Validators.email],
-
       kitId: ['', Validators.required],
-
-      // quantidade: [1, Validators.required],
 
       observacoes: [''],
 
